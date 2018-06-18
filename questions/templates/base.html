@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+
+    <title>{% block title %}{% endblock %}-askMitrakov</title>
+
+<body>
+{% include "navbar.html" %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            {% block body %}{% endblock %}
+        </div>
+        <div class="col-lg-4">
+            <div class="tags">
+                <h3>Популярные тэги:</h3>
+                <h4>
+                    {% for tag in most_popular_tags %}
+                        <a href="/tag/{{ tag.name }}"><span class="badge badge-danger">{{ tag.name }}</span></a>
+                    {% endfor %}
+                </h4>
+            </div>
+            <div class="members" style="margin-top: 100px">
+                <h3>Лучшие участники:</h3>
+                <ul>
+                    {% for profile in best_members %}
+                    <li><a href="#" class="text-success">{{ profile.nickname }}</a></li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static "js/jquery.min.js" %}"></script>
+<script src="{% static "js/popper.min.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ question.id }}{% endblock %}
+
+{% block body %}
+    <h1 class="question-title text-success" align="center">
+        <ins>{{ question.title }}</ins>
+    </h1>
+    <div class="row question">
+        <div class="col-3">
+            <div class="card" style="width: 8rem;">
+                <img class="card-img-top question-image" src="{{ question.author.avatar.url }}"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <div class="btn-group question-rating" role="group">
+                        <button type="button" class="btn btn-outline-danger">-</button>
+                        <button type="button" class="btn btn-dark" disabled>123</button>
+                        <button type="button" class="btn btn-outline-success">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <p class="answer-text">
+                {{ question.text }}
+            </p>
+            <div class="row">
+
+                <div class="post-tags">
+                    <h6><b>Тэги:</b>
+                        {% for tag in question.tag_set.all %}
+                            <a href="/tag/{{ tag.name }}"><span class="badge badge-success">{{ tag.name }}</span></a>
+                        {% endfor %}
+                    </h6>
+                </div>
+            </div>
+        </div>
+        <hr width="90%">
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+            <br>
+        </div>
+        <div class="col-md-11">
+            {% for answer in paginated_list %}
+                {% include "answer.html" %}
+            {% endfor %}
+        </div>
+    </div>
+    <form class="needs-validation">
+        <div class="form-group answer-form">
+            <label for="answer-form"><h3 class="text-success">Ответ:</h3></label>
+            <textarea class="form-control" id="answer-form" rows="3" placeholder="Сюда ответ." required></textarea>
+            <button type="submit" class="btn btn-success answer-btn">Ответить</button>
+        </div>
+        <div class="invalid-feedback">
+            Нужно ввести текст.
+        </div>
+    </form>
+    {% include "paginator.html" %}
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+{% endblock %}

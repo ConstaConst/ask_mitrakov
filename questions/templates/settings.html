@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}settings{% endblock %}
+
+{% block body %}
+    <h1 class="text-success">
+        <ins>Настройки:</ins>
+        {{ user.profile.nickname }}
+    </h1>
+    <br>
+    <form enctype="multipart/form-data" method="post" action="" class="settings-form needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="mb-3">
+            <h3 class="text-success"><label for="settings-form-login">Логин</label></h3>
+            {{ form.username }}
+        </div>
+        <div class="mb-3">
+            <h3 class="text-success"><label for="settings-form-nickname">Ник</label></h3>
+            {{ form.nickname }}
+        </div>
+        <div class="mb-3">
+            <h3 class="text-success"><label for="settings-form-ava">Аватар</label></h3>
+            {{ form.avatar }}
+        </div>
+
+        <br>
+        <button class="btn btn-success btn-lg" type="submit">Измениться.</button>
+    </form>
+{% endblock %}

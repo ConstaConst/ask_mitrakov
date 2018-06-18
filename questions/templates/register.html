@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}register{% endblock %}
+
+{% block body %}
+    <h1 class="text-success">
+        <ins>Регистрация</ins>
+    </h1>
+    <br>
+    <form enctype="multipart/form-data" method="post" action="" class="register-form needs-validation">
+        {% csrf_token %}
+
+        {% for e in form.username.errors %}
+            <h5 class="text-danger">{{ e }}</h5>
+        {% endfor %}
+        <div class="mb-3">
+            <h3 class="text-success"><label for="register-form-login">Логин</label></h3>
+            {{ form.username }}
+        </div>
+        {% for e in form.nickname.errors %}
+            <h5 class="text-danger">{{ e }}</h5>
+        {% endfor %}
+        <div class="mb-3">
+            <h3 class="text-success"><label for="register-form-nickname">Ник</label></h3>
+            {{ form.nickname }}
+        </div>
+        {% for e in form.avatar.errors %}
+            <h5 class="text-danger">{{ e }}</h5>
+        {% endfor %}
+        <div class="mb-3">
+            <h3 class="text-success"><label for="register-form-ava">Аватар</label></h3>
+            {{ form.avatar }}
+        </div>
+        {% for e in form.password.errors %}
+            <h5 class="text-danger">{{ e }}</h5>
+        {% endfor %}
+        <div class="mb-3">
+            <h3 class="text-success"><label for="register-form-pass">Пароль</label></h3>
+            {{ form.password }}
+        </div>
+        <div class="mb-3">
+            <h3 class="text-success"><label for="register-form-repass">Проверка пароля</label></h3>
+            {{ form.password2 }}
+        </div>
+        <br>
+        <button class="btn btn-success btn-lg" type="submit">Появиться!</button>
+    </form>
+{% endblock %}

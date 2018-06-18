@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}questions{% endblock %}
+{% block body %}
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <h3><a class="nav-link active text-success" href="#">Новое</a></h3>
+        </li>
+        <li class="nav-item">
+            <h3><a class="nav-link text-danger" href="{% url 'hot' %}">Горячее</a></h3>
+        </li>
+    </ul>
+    <br>
+    {% for question in paginated_list %}
+        {% include "question.html" %}
+    {% endfor %}
+
+    {% include "paginator.html" %}
+{% endblock %}

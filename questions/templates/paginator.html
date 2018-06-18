@@ -1,0 +1,31 @@
+<nav aria-label="pagination_panel">
+    <ul class="pagination justify-content-center">
+        {% if paginated_list.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ paginated_list.previous_page_number }}">Предыдущая</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Предыдущая</a>
+            </li>
+        {% endif %}
+
+        {% if paginated_list.has_previous or paginated_list.has_next %}
+            {% for i in paginated_list.paginator.page_range %}
+                <li class="page-item {% if i == paginated_list.number %}active{% endif %}">
+                    <a class="page-link" href="?page={{ i }}">{{ i }} <span class="sr-only">(current)</span></a>
+                </li>
+            {% endfor %}
+        {% endif %}
+
+        {% if paginated_list.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ paginated_list.next_page_number }}">Следующая</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Следующая</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>

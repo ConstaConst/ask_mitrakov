@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}login{% endblock %}
+
+{% block body %}
+    <h1 class="text-success">
+        <ins>Вход:</ins>
+    </h1>
+    <br>
+    {% if error %}
+        <h5 class="text-danger">Неверный логин или пароль.</h5>
+    {% endif %}
+    <form class="login-form needs-validation" novalidate method="post" action={% url 'login' %}>
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+        <div class="mb-3">
+            <h3 class="text-success"><label for="login-form-login">Логин</label></h3>
+            <input type="text" name="username" class="form-control" id="login-form-login" placeholder="Сюда логин." maxlength="128"
+                   required>
+        </div>
+
+        <div class="mb-3">
+            <h3 class="text-success"><label for="login-form-password">Пароль</label></h3>
+            <input type="password" name="password" class="form-control" id="login-form-password" placeholder="Сюда пароль." maxlength="128" required>
+        </div>
+        <br>
+        <button class="btn btn-success btn-lg" type="submit">Войти</button>
+    </form>
+    <br>
+    <a href="{% url 'register' %}" class="text-success">Создать новый аккаунт.</a>
+{% endblock %}

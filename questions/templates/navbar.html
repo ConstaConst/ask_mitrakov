@@ -1,0 +1,41 @@
+{% load static %}
+<div class="container-fluid navbar">
+    <div class="row">
+        <nav class="navbar navbar-expand-md fixed-top bg-dark">
+            <div class="col-lg-2">
+                <a class="navbar-brand header-logo" href="{% url 'index' %}">askMitrakov</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="col-lg-10">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="col-lg-6">
+                        <form class="search-form form-inline">
+                            <input class="form-control mr-sm-2" size="30" type="search" placeholder="Задавай вопрос"
+                                   aria-label="Search">
+                            <button class="btn btn-danger my-2 my-sm-0" type="submit">СПРОСИТЬ!</button>
+                        </form>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="profile">
+                            {% if user.is_authenticated %}
+                                <span class="profile-username">{{ user.profile.nickname }}</span>
+                                <img src="{{ user.profile.avatar.url }}" class="profile-avatar" alt="avatar">
+                                <span>
+                                    <a class="btn btn-sm btn-outline-success" href="{% url 'settings' %}" role="button">Настройки</a>
+                                    <a class="btn btn-sm btn-outline-success" href="{% url 'logout' %}" role="button">Выход</a>
+                                </span>
+                            {% else %}
+                                <a class="btn btn-sm btn-outline-success" href="{% url 'login' %}" role="button">Вход</a>
+                                <a class="btn btn-sm btn-outline-success" href="{% url 'register' %}" role="button">Регистрация</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

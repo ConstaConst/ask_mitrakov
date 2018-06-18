@@ -1,0 +1,37 @@
+{% load static %}
+<div class="row question">
+    <hr width="90%">
+    <div class="col-3">
+        <div class="card" style="width: 8rem;">
+            <img class="card-img-top question-image" src="{{ question.author.avatar.url }}" alt="Card image cap">
+            <div class="card-body">
+                <div class="btn-group question-rating" role="group">
+                    <button type="button" class="btn btn-outline-danger">-</button>
+                    <button type="button" class="btn btn-dark" disabled>123</button>
+                    <button type="button" class="btn btn-outline-success">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <a href="{% url 'current_question' question.id %}"><h3 class="question-title text-success">{{ question.title }}</h3></a>
+        <p class="question-text">
+            {{ question.text }}
+        </p>
+        <div class="row">
+            <div class="col-md-3">
+                <a href="{% url 'current_question' question.id %}" class="text-success">Ответы ({{ question.answer_set.count }})</a>
+            </div>
+            <div class="col-md-9">
+                <div class="post-tags">
+                    <h6><b>Тэги:</b>
+                        {% for tag in question.tag_set.all %}
+                            <a href="/tag/{{ tag.name }}"><span class="badge badge-success">{{ tag.name }}</span></a>
+                        {% endfor %}
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr width="90%">
+</div>

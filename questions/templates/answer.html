@@ -1,0 +1,27 @@
+{% load static %}
+<div class="row question">
+    <hr width="90%">
+    <div class="col-3">
+        <div class="card" style="width: 8rem;">
+            <img class="card-img-top question-image" src="{{ answer.author.avatar.url }}"
+                 alt="Card image cap">
+            <div class="card-body">
+                <div class="btn-group question-rating" role="group">
+                    <button type="button" class="btn btn-outline-danger">-</button>
+                    <button type="button" class="btn btn-dark" disabled>123</button>
+                    <button type="button" class="btn btn-outline-success">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <p class="answer-text">
+            {{ answer.text }}
+        </p>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input badge-success" id="correct_answer_{{ answer.id }}">
+            <label class="custom-control-label text-success" for="correct_answer_{{ answer.id }}"><b>Правильно</b></label>
+        </div>
+    </div>
+    <hr width="90%">
+</div>

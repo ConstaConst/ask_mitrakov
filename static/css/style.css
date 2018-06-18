@@ -1,0 +1,77 @@
+.navbar {
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.83);
+}
+.header-logo {
+    font-size: 2.25rem;
+    color: white;
+    margin-left: 30%;
+}
+.search-form {
+    justify-content: center;
+}
+.profile {
+    float: right;
+    margin-right: 10%;
+}
+
+.profile-avatar {
+    height: 60px;
+    border-radius: 50%;
+    border: solid #1c7430;
+    margin-right: 20px;
+    margin-left: 5px;
+}
+.profile-username {
+    font-size: 1.4rem;
+    color: snow;
+    text-align: center;
+}
+.question-image {
+    height: 8rem;
+    border-radius: 50%;
+    border: solid #1c7430;
+}
+.question-rating {
+    margin-left: -16px;
+}
+.question-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+	height: 120px;
+}
+.card {
+    border: none;
+}
+.tags {
+    margin-top: 100px;
+}
+.question-title {
+    margin-bottom: 50px;
+}
+.answer-form {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+.answer-btn {
+    float: right;
+    margin-top: 10px;
+}
+.pagination {
+    margin-top: 50px;
+}
+.login-form input {
+    width: 400px;
+}
+.settings-form input {
+    width: 400px;
+}
+.register-form input {
+    width: 400px;
+}
+input#register-form-ava {
+    border: none;
+}
+input#settings-form-ava {
+    border: none;
+}

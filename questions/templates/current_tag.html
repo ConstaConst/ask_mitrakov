@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}tag-{{ cur_tag.name }}{% endblock %}
+{% block body %}
+
+    <h2 class="text-success"><ins>Тэг - {{ cur_tag.name }}</ins></h2>
+    <br>
+
+    {% for question in paginated_list %}
+        {% include "question.html" %}
+    {% endfor %}
+
+    {% include "paginator.html" %}
+{% endblock %}
